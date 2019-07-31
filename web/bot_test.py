@@ -32,6 +32,21 @@ class Bot_TestCase(TestCase):
             time.sleep(3)
             bot.close()
 
+    def test_load_friend_requests(self):
+        bot = Bot()
+
+        try:
+            bot.load_fb()
+            bot.login(acct.USER, acct.PASS)
+            bot.load_friends_requests()
+
+        except Exception as ex:
+            print(ex)
+
+        finally:
+            time.sleep(3)
+            bot.close()
+
     def test_load_wall(self):
         bot = Bot()
 

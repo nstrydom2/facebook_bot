@@ -29,7 +29,7 @@ class Bot():
                                             desired_capabilities=capabilities)
 
     def load_fb(self):
-        self.driver.get('https://facebook.com/')
+        self.driver.get('https://mbasic.facebook.com/')
         self.wait()
 
     def load_wall(self):
@@ -51,20 +51,22 @@ class Bot():
         email_element.send_keys(usr)
         pass_element.send_keys(passwd)
 
-        self.driver.find_element_by_xpath('//*[@id="u_0_2"]').click()
+        self.driver.find_element_by_name('login').click()
+        self.wait()
+
+        self.driver.find_element_by_xpath('/html/body/div/div/div/div/table/tbody/tr/td/div/div[3]/a').click()
         self.wait()
 
     def load_friends_requests(self):
+        friends_button_xpath = '/html/body/div/div/div[1]/div/div/a[6]'
+        friend_requests_xpath = '/html/body/div/div/div[2]/div/div[1]/div[1]/a'
+
         # Click friend requests button
-        self.driver.find_element_by_xpath(
-            '/html/body/div[1]/div[2]/div/div[1]/div/div/div/div[2]/div[2]/div[1]'
-        ).click()
+        self.driver.find_element_by_xpath(friends_button_xpath).click()
         self.wait()
 
         # Click 'See All' in friend requests drop down
-        self.driver.find_element_by_xpath(
-            '/html/body/div[1]/div[2]/div/div[1]/div/div/div/div[2]/div[2]/div[1]/div/div/ul/li/div/div/div[2]/a'
-        ).click()
+        self.driver.find_element_by_xpath(friend_requests_xpath).click()
         self.wait()
 
     def add_recommended(self, limit=150):
@@ -87,17 +89,31 @@ class Bot():
         pass
 
     def upload_picture(self, caption='', img_path=''):
-        upload_button_xpath = '//*[@id="js_1"]'
-        upload_button_id = 'js_1il'
+        upload_button_xpath = '/html/body/div/div/div[2]/div/div[2]/div/form/div[2]/span/div[1]/table/tbody/tr/td[2]/input'
+        file_button_xpath = '/html/body/div/div/div[2]/div/table/tbody/tr/td/form/div[1]/div/input[1]'
+        preview_button_xpath = '/html/body/div/div/div[2]/div/table/tbody/tr/td/form/div[3]/input[1]'
+        post_button_xpath = '/html/body/div/div/div[2]/div/table/tbody/tr/td/div/form/input[19]'
 
         # self.driver.find_element_by_xpath(
         #     '/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div' +
         #     '/div[2]/div/div/div/div/div[2]/div/div[2]/div[2]/ul/li[1]/div/div/span/a'
         # ).click()
 
-        self.driver.find_elements_by_id(upload_button_id).click()
+        # Click Upload Photo link/button
+        self.driver.find_elements_by_xpath(upload_button_xpath)[0].click()
         self.wait()
-        #
+
+        # Select Pic to upload
+        self.driver.find_element_by_xpath(file_button_xpath)[0].click()
+        self.wait()
+
+        # Click Preview button
+        self.driver.find_element_by_xpath(preview_button_xpath)[0].click()
+        self.wait()
+
+        # Click Post button
+        self.driver.find_element_by_xpath(post_button_xpath)[0].click()
+
         # file_upload = self.driver.find_element_by_xpath('//*[@id="js_5g2"]')
         # file_upload.send_keys(img_path)
         #
