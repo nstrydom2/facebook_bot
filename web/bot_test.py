@@ -53,6 +53,8 @@ class Bot_TestCase(TestCase):
         try:
             bot.load_fb()
             bot.login(acct.USER, acct.PASS)
+
+            # Upload method
             bot.upload_picture(caption='Test upload', img_path='pictures/profile_pic.jpg')
 
         except Exception as ex:

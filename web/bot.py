@@ -6,9 +6,13 @@ from config import proxy as proxy_conf
 
 class Bot():
     def __init__(self, proxy=False):
+        browser_profile = webdriver.FirefoxProfile()
+        browser_profile.set_preference('dom.webnotifications.enabled', False)
+
         # Prob create selenium instance here
         if proxy is False:
-            self.driver = webdriver.Firefox(executable_path=r'/home/ghost/Drivers/geckodriver')
+            self.driver = webdriver.Firefox(executable_path=r'/home/ghost/Drivers/geckodriver',
+                                            firefox_profile=browser_profile)
         else:
             # Set up proxy if 'proxy' variables' value is True
             proxy_server = Proxy()
@@ -21,6 +25,7 @@ class Bot():
             proxy_server.add_to_capabilities(capabilities)
 
             self.driver = webdriver.Firefox(executable_path=r'/home/ghost/Drivers/geckodriver',
+                                            firefox_profile=browser_profile,
                                             desired_capabilities=capabilities)
 
     def load_fb(self):
@@ -82,21 +87,26 @@ class Bot():
         pass
 
     def upload_picture(self, caption='', img_path=''):
-        self.driver.find_element_by_xpath(
-            '/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div' +
-            '/div[2]/div/div/div/div/div[2]/div/div[2]/div[2]/ul/li[1]/div/div/span/a'
-        ).click()
+        upload_button_xpath = '//*[@id="js_1"]'
+        upload_button_id = 'js_1il'
+
+        # self.driver.find_element_by_xpath(
+        #     '/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div' +
+        #     '/div[2]/div/div/div/div/div[2]/div/div[2]/div[2]/ul/li[1]/div/div/span/a'
+        # ).click()
+
+        self.driver.find_elements_by_id(upload_button_id).click()
         self.wait()
-
-        file_upload = self.driver.find_element_by_xpath('//*[@id="js_5g2"]')
-        file_upload.send_keys(img_path)
-
-        status_text_in = self.driver.find_element_by_xpath(
-            '/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div/div[2]/div[1]' +
-            '/div/div/div/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/div/div/div/div/div/div/div/div'
-        )
-        status_text_in.send_keys(caption)
-        status_text_in.send_keys(Keys.RETURN)
+        #
+        # file_upload = self.driver.find_element_by_xpath('//*[@id="js_5g2"]')
+        # file_upload.send_keys(img_path)
+        #
+        # status_text_in = self.driver.find_element_by_xpath(
+        #     '/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div/div[2]/div[1]' +
+        #     '/div/div/div/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/div/div/div/div/div/div/div/div'
+        # )
+        # status_text_in.send_keys(caption)
+        # status_text_in.send_keys(Keys.RETURN)
 
     def wait(self, delay=3):
         self.driver.implicitly_wait(delay)
