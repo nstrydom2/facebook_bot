@@ -69,6 +69,23 @@ class Bot():
         self.driver.find_element_by_xpath(friend_requests_xpath).click()
         self.wait()
 
+    def like_feed_posts(self, num_posts=50):
+        next_button = '/html/body/div/div/div[2]/div/div[4]/a'
+
+        for num in range(1, num_posts):
+            xpath = '/html/body/div/div/div[2]/div/div[4]/div[3]/div[{0}]/div[2]/div[2]/span[1]/a[1]'.format(num)
+
+            try:
+                self.driver.find_element_by_xpath(xpath).click()
+                self.wait()
+
+                if num % 8 == 0:
+                    self.driver.find_element_by_xpath(next_button).click()
+                    self.wait()
+
+            except:
+                pass
+
     def add_recommended(self, limit=150):
         self.load_friends_requests()
 
