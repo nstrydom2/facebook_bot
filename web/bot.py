@@ -1,4 +1,7 @@
+import schedule
+
 from random import randrange
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.proxy import Proxy, ProxyType
@@ -13,9 +16,11 @@ class Bot():
         browser_profile = webdriver.FirefoxProfile()
         browser_profile.set_preference('dom.webnotifications.enabled', False)
 
+        geckdriver_path = r'/home/ghost/Drivers/geckodriver'
+
         # Prob create selenium instance here
         if proxy is False:
-            self.driver = webdriver.Firefox(executable_path=r'/home/ghost/Drivers/geckodriver',
+            self.driver = webdriver.Firefox(executable_path=geckdriver_path,
                                             firefox_profile=browser_profile)
         else:
             # Set up proxy if 'proxy' variables' value is True
@@ -28,7 +33,7 @@ class Bot():
             capabilities = webdriver.DesiredCapabilities.FIREFOX
             proxy_server.add_to_capabilities(capabilities)
 
-            self.driver = webdriver.Firefox(executable_path=r'/home/ghost/Drivers/geckodriver',
+            self.driver = webdriver.Firefox(executable_path=geckdriver_path,
                                             firefox_profile=browser_profile,
                                             desired_capabilities=capabilities)
         # Initialize class variables
@@ -73,7 +78,27 @@ class Bot():
             print(ex)
 
     def load_scheduler(self):
-        pass
+        try:
+            ##
+            ## ! Don't forget to edit this section !
+            ##
+            if self.likes_monthly > 0:
+                schedule.every(2).day.at("10:30").do(self.like_feed_posts())
+
+            if self.like_vids_monthly > 0:
+                schedule.every(2).day.at("10:30").do(self.like_feed_posts())
+
+            if self.accept_all_requests is True:
+                schedule.every(2).day.at("10:30").do(self.like_feed_posts())
+
+            if self.send_requests is True:
+                schedule.every(2).day.at("10:30").do(self.like_feed_posts())
+
+            if self.post_imgs > 0:
+                schedule.every(2).day.at("10:30").do(self.like_feed_posts())
+
+        except Exception as ex:
+            pass
 
     def load_fb(self):
         self.driver.get(self.fb_url)
