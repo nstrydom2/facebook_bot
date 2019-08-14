@@ -1,8 +1,12 @@
+from random import randrange
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 
 from config import proxy as proxy_conf
+from config import acct_conf
+from config import bot_conf
+
 
 class Bot():
     def __init__(self, proxy=False):
@@ -27,9 +31,52 @@ class Bot():
             self.driver = webdriver.Firefox(executable_path=r'/home/ghost/Drivers/geckodriver',
                                             firefox_profile=browser_profile,
                                             desired_capabilities=capabilities)
+        # Initialize class variables
+        self.fb_url = 'https://mbasic.facebook.com/'
+
+        # Bot directive variables
+        self.likes_monthly = 0
+        self.like_vids_monthly = 0
+        self.accept_all_requests = False
+        self.send_requests = True
+        self.post_imgs = 0
+
+    def start(self):
+        self.parse_bot_config()
+        self.load_scheduler()
+
+    def parse_bot_config(self):
+        try:
+            if len(bot_conf.PROGRAMMER) is not 0:
+                raise Exception("Could not load bot config!")
+
+            for directive, value in bot_conf.PROGRAMMER.items():
+                if directive.lower() is "random likes per month":
+                    self.likes_monthly = value
+
+                elif directive.lower() is "random videos per month":
+                    self.like_vids_monthly = value
+
+                elif directive.lower() is "accept all friend requests":
+                    self.accept_all_requests = value.lower() is "yes"
+
+                elif directive.lower() is "send friend requests":
+                    self.send_requests = value.lower is "yes"
+
+                elif directive.lower() is "random images post per month":
+                    self.post_imgs = value
+
+                else:
+                    raise Exception("Invalid directive!")
+
+        except Exception as ex:
+            print(ex)
+
+    def load_scheduler(self):
+        pass
 
     def load_fb(self):
-        self.driver.get('https://mbasic.facebook.com/')
+        self.driver.get(self.fb_url)
         self.wait()
 
     def load_wall(self):
@@ -140,6 +187,14 @@ class Bot():
         # )
         # status_text_in.send_keys(caption)
         # status_text_in.send_keys(Keys.RETURN)
+
+    def random_likes(self):
+        while True:
+            rand_num = randrange(0, 8)
+
+            if rand_num % 4 == 0:
+                pass
+                
 
     def wait(self, delay=3):
         self.driver.implicitly_wait(delay)
