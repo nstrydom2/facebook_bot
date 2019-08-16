@@ -77,6 +77,7 @@ class BotUtils():
 
     def friendspagerequired(self, func):
         def wrapper():
-            if not self.driver.:
+            if not self.driver:
+                pass
 
         return wrapper

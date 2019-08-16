@@ -32,7 +32,7 @@ class Bot(BotUtils):
         self.post_imgs = 0
 
         # Prob create selenium instance here
-        if proxy is False:
+        if proxy_conf.LIST is None:
             self.driver = webdriver.Firefox(executable_path=geckdriver_path,
                                             firefox_profile=browser_profile)
         else:
@@ -140,6 +140,7 @@ class Bot(BotUtils):
             pass
 
     def accept_all_friend_requests(self, max=50):
+        self.driver
         self.load_friends_requests()
 
         for index in range(max):
