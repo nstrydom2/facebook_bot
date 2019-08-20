@@ -1,8 +1,11 @@
 from random import randrange
+from logging import getLogger
 
 
 class BotUtils():
     def __init__(self):
+        self.utils_logger = getLogger(__name__)
+
         self.fb_url = None
         self.driver = None
 
@@ -75,9 +78,16 @@ class BotUtils():
     def close(self):
         self.driver.close()
 
-    def friendspagerequired(self, func):
+    def friends_page_required(self, func):
         def wrapper():
-            if not self.driver:
-                pass
+            if not self.driver.current_url.index('friends') >= 0:
+                self.load_friends_requests()
+
+        return wrapper
+
+    def login_required(self, func):
+        def wrapper():
+            if not self.driver.current_url.index('friends') >= 0:
+                self.load_friends_requests()
 
         return wrapper
