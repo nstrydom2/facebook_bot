@@ -291,3 +291,58 @@ JavaScript warning: resource:///modules/UrlbarView.jsm, line 123: Array.reduce i
 1564601986558	Marionette	INFO	Listening on port 39671
 1564601986645	Marionette	WARN	TLS certificate errors will be ignored for this session
 1564601996824	Marionette	INFO	Stopped listening on port 39671
+1566475344144	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.kqGj3ZnCBZcV"
+1566475344490	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1566475344490	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1566475344496	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1566475344496	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1566475346007	Marionette	INFO	Listening on port 43703
+1566475346113	Marionette	WARN	TLS certificate errors will be ignored for this session
+1566475346120	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"192.168.0.1:80"}
+1566475349174	Marionette	INFO	Stopped listening on port 43703
+1566475699130	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.NjLdo05PkOaW"
+1566475699445	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1566475699445	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1566475699445	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1566475699445	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1566475700992	Marionette	INFO	Listening on port 44005
+1566475701047	Marionette	WARN	TLS certificate errors will be ignored for this session
+1566475701069	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"192.168.0.1:80"}
+1566475714790	Marionette	INFO	Stopped listening on port 44005
+1566475761376	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.vrHH0z3amNqf"
+1566475761705	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1566475761705	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1566475761705	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1566475761705	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1566475763481	Marionette	INFO	Listening on port 36713
+1566475763583	Marionette	WARN	TLS certificate errors will be ignored for this session
+1566475763591	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"192.168.0.1:80"}
+1566475774415	Marionette	INFO	Stopped listening on port 36713
+1566475815942	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.5QnVDCdhxV2g"
+1566475816247	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1566475816248	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1566475816248	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1566475816248	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1566475817688	Marionette	INFO	Listening on port 35673
+1566475817771	Marionette	WARN	TLS certificate errors will be ignored for this session
+1566475817779	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"192.168.0.1:80"}
+1566475827645	Marionette	INFO	Stopped listening on port 35673
+1566475860262	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.xpZrInVxsGSc"
+1566475860577	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1566475860577	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1566475860577	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1566475860577	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1566475862050	Marionette	INFO	Listening on port 41169
+1566475862069	Marionette	WARN	TLS certificate errors will be ignored for this session
+1566475862075	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"192.168.0.1:80"}
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: http://%(server)s/dummy/blocklist//buckets/monitor/collections/changes/records?_expected=%221566422986828%22 is not a valid URL..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:201:13
+
+[Parent 31817, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/firefox/src/firefox-68.0.1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+1566477024150	Marionette	INFO	Stopped listening on port 41169
+[Parent 31817, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox/src/firefox-68.0.1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358

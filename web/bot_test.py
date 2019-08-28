@@ -17,7 +17,6 @@ class Bot_TestCase(TestCase):
 
         finally:
             time.sleep(3)
-            bot.close()
 
     def test_load_facebook(self):
         bot = Bot()

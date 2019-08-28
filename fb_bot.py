@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import argparse
 
 from web import bot
@@ -22,14 +23,15 @@ parser.add_argument('-H', '--headless',
                     help='run the bot in headless mode')
 
 args = parser.parse_args()
-logging = []
-proxy = args.p
-headless = args.H
+logger = []
+proxy = args.proxy
+headless = args.headless
 
-if args.v is True:
-    logging.append('INFO')
-if args.d is True:
-    logging.append('DEBUG')
+if args.verbose is True:
+    logger.append('INFO')
+#if args.debug is True:
+logger.append('DEBUG')
 
-fb_bot = bot.Bot(logging=logging, proxy=proxy, headless=headless)
+fb_bot = bot.Bot(logger=logger, proxy=proxy, headless=headless)
 fb_bot.bot_startup()
+
