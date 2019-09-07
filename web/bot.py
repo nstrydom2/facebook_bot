@@ -155,19 +155,19 @@ class Bot():
             #     schedule.every(2).day.at("10:30").do(self.random_like())
 
             if self.like_vids_monthly > 0:
-                schedule.every(1).days.at("10:30").do(self.bot_utils.random_like)
+                schedule.every(1).days.at("11:30").do(self.bot_utils.random_like)
                 bot_logger.debug('Scheduled liked videos')
 
             if self.accept_all_requests is True:
-                schedule.every(1).days.at("10:30").do(self.accept_all_friend_requests)
+                schedule.every(1).days.at("12:30").do(self.accept_all_friend_requests)
                 bot_logger.debug('Scheduled accepting requests')
 
             if self.send_requests is True:
-                schedule.every(1).days.at("10:30").do(self.bot_utils.add_all_recommended)
+                schedule.every(1).days.at("13:30").do(self.bot_utils.add_all_recommended)
                 bot_logger.debug('Scheduled sending friend requests')
 
             if self.post_imgs > 0:
-                schedule.every(1).days.at("10:30").do(self.bot_utils.upload_picture)
+                schedule.every(1).days.at("14:30").do(self.bot_utils.upload_picture)
                 bot_logger.debug('Scheduled posting images')
 
         except Exception as ex:
